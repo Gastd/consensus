@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="robot_name"/>
+    <arg name="init_pose"/>
+
+    <!-- push robot_description to factory and spawn robot in gazebo -->
+    <node name="spawn_pioneer" pkg="gazebo_ros" type="spawn_model" 
+        args="$(arg init_pose) -urdf -param robot_description -model $(arg robot_name) -robot_namespace $(arg robot_name)" 
+        respawn="false" output="screen" />
+
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find p3at_tutorial)/launch/gazebo.rviz"/> -->
+
+    <group if="$(eval robot_name == 'aramis')">
+        <param name="robot_description" command="$(find xacro)/xacro $(find aramis_description)/robots/aramis_description.xacro" />
+    </group>
+    <group if="$(eval robot_name == 'porthos')">
+        <param name="robot_description" command="$(find xacro)/xacro $(find porthos_description)/robots/porthos_description.xacro" />
+    </group>
+    <group if="$(eval robot_name == 'athos')">
+        <param name="robot_description" command="$(find xacro)/xacro $(find athos_description)/robots/athos_description.xacro" />
+    </group>
+
+    <!-- send fake joint values -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+        <param name="use_gui" value="FALSE"/>
+    </node>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+</launch>

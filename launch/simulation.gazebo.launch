@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="gui" default="false"/>
+    <arg name="robot1" default="aramis"/>
+    <arg name="robot2" default="porthos"/>
+    <arg name="robot3" default="athos"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <!-- <arg name="world_name" default="$(find aramis_description)/worlds/maze_static.world"/> -->
+    </include>
+    <!-- BEGIN ROBOT 1-->
+    <group ns="$(arg robot1)">
+        <param name="tf_prefix" value="$(arg robot1)" />
+        <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
+            <arg name="init_pose" value="-x 1 -y 1 -z 0" />
+            <arg name="robot_name"  value="$(arg robot1)" />
+        </include>
+    </group>
+    <node pkg="tf" type="static_transform_publisher" name="robot1_broadcaster" args="1 1 0 0 0 0 odom $(arg robot1)/odom 50" />
+
+    <group ns="$(arg robot2)">
+        <param name="tf_prefix" value="$(arg robot2)" />
+        <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
+            <arg name="init_pose" value="-x 0 -y 1 -z 0" />
+            <arg name="robot_name"  value="$(arg robot2)" />
+        </include>
+    </group>
+    <node pkg="tf" type="static_transform_publisher" name="robot2_broadcaster" args="0 1 0 0 0 0 odom $(arg robot2)/odom 50" />
+
+    <group ns="$(arg robot3)">
+        <param name="tf_prefix" value="$(arg robot3)" />
+        <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
+            <arg name="init_pose" value="-x 1 -y 0 -z 0" />
+            <arg name="robot_name"  value="$(arg robot3)" />
+        </include>
+    </group>
+    <node pkg="tf" type="static_transform_publisher" name="robot3_broadcaster" args="1 0 0 0 0 0 odom $(arg robot3)/odom 50" />
+
+
+</launch>
