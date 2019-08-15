@@ -17,6 +17,7 @@
     </group>
     <node pkg="tf" type="static_transform_publisher" name="robot1_broadcaster" args="0 0 0 0 0 0 odom $(arg robot1)/odom 50" />
 
+    <!-- BEGIN ROBOT 2-->
     <group ns="$(arg robot2)">
         <param name="tf_prefix" value="$(arg robot2)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
@@ -26,6 +27,7 @@
     </group>
     <node pkg="tf" type="static_transform_publisher" name="robot2_broadcaster" args="0 0 0 0 0 0 odom $(arg robot2)/odom 50" />
 
+    <!-- BEGIN ROBOT 3-->
     <group ns="$(arg robot3)">
         <param name="tf_prefix" value="$(arg robot3)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
