@@ -11,9 +11,9 @@ from tf.transformations import euler_from_quaternion
 
 
 
-consensus_state = np.zeros([6, 1])
+consensus_state = np.zeros([8, 1])
 #                     0   1   2   3       4       5		  6		  7
-# consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3,]
+# consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3]
 
 
 #edit add offset
@@ -35,8 +35,8 @@ def update_pose1(msg):
 	    msg.pose.pose.orientation.z,
 	    msg.pose.pose.orientation.w)
 
-	consensus_state[0, 0] = msg.twist.twist.linear.x # linear speed
-	consensus_state[3, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+	consensus_state[1, 0] = msg.twist.twist.linear.x # linear speed
+	consensus_state[5, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
 
 
 
@@ -50,8 +50,8 @@ def update_pose2(msg):
 	    msg.pose.pose.orientation.z,
 	    msg.pose.pose.orientation.w)
 
-	consensus_state[1, 0] = msg.twist.twist.linear.x # linear speed
-	consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+	consensus_state[2, 0] = msg.twist.twist.linear.x # linear speed
+	consensus_state[6, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
 
 	# print(consensus_state)
 
@@ -65,8 +65,8 @@ def update_pose3(msg):
 	    msg.pose.pose.orientation.z,
 	    msg.pose.pose.orientation.w)
 
-	consensus_state[0, 0] = msg.twist.twist.linear.x # linear speed
-	consensus_state[3, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+	consensus_state[3, 0] = msg.twist.twist.linear.x # linear speed
+	consensus_state[7, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
 
 
 
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 	l = 1
 
 	# calculates laplacian
-	A = np.array([[0, 0, 0, 0]
+	A = np.array([[0, 0, 0, 0],
 				  [1, 0, 1, 1],
 				  [1, 1, 0 ,1],
 				  [1, 1, 1, 0]])
