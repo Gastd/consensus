@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="aramis_dint" type="double_integrator.py" pkg="consensus" args="aramis" />
+    <node name="porthos_dint" type="double_integrator.py" pkg="consensus" args="porthos" />
+    <node name="athos_dint" type="double_integrator.py" pkg="consensus" args="athos" />
+</launch>
