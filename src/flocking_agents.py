@@ -129,7 +129,7 @@ if __name__ == '__main__':
 				for j in range(n):
 					if(j != this_robot):
 						v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
-						u1_sum += A[this_robot, j]*v_error
+						u1_sum += A[this_robot, j] * v_error
 
 				u1 = -k * u1_sum - l * np.sign(u1_sum)
 
@@ -139,7 +139,7 @@ if __name__ == '__main__':
 				for j in range(n):
 					if(j != this_robot):
 						theta_error = consensus_state[n + this_robot, 0] - consensus_state[n + j, 0]
-						u2_sum += A[this_robot, j]*theta_error
+						u2_sum += A[this_robot, j] * theta_error
 
 				u2 = -k * u2_sum - l * np.sign(u2_sum)
 

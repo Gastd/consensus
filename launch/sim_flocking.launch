@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <launch>
-    <node name="aramis_dint" type="flocking.py" pkg="consensus" args="aramis" output="screen" />
-    <node name="porthos_dint" type="flocking.py" pkg="consensus" args="porthos" output="screen" />
-    <node name="athos_dint" type="flocking.py" pkg="consensus" args="athos" output="screen" />
+    <node name="aramis_flock" type="flocking_agents.py" pkg="consensus" args="aramis" />
+    <node name="porthos_flock" type="flocking_agents.py" pkg="consensus" args="porthos" />
+    <node name="athos_flock" type="flocking_agents.py" pkg="consensus" args="athos" />
+    <node name="leader_flock" type="flocking_leader.py" pkg="consensus" args="leader" output="screen" />
+
 </launch>
