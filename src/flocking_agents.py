@@ -25,6 +25,19 @@ print('global variables initialized')
 # adicionar offsets de posicao
 
 
+def update_pose0(msg):
+	#print('update_pose1')
+	global consensus_state
+
+	quaternion = (
+	    msg.pose.pose.orientation.x,
+	    msg.pose.pose.orientation.y,
+	    msg.pose.pose.orientation.z,
+	    msg.pose.pose.orientation.w)
+
+	consensus_state[0, 0] = msg.twist.twist.linear.x # linear speed
+	consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+
 def update_pose1(msg):
 	#print('update_pose1')
 	global consensus_state
@@ -80,9 +93,10 @@ if __name__ == '__main__':
 
 
 	# initializes node
-	rospy.init_node("double_integrator_" + robot_name[this_robot], anonymous=True)
+	rospy.init_node("flocking_" + robot_name[this_robot], anonymous=True)
 	print(robot_name[this_robot] + " is on!")
 	# starts subscribers and publishers
+	rospy.Subscriber("/leader/pose", Odometry, update_pose0)
 	rospy.Subscriber("/aramis/pose", Odometry, update_pose1)
 	rospy.Subscriber("/athos/pose", Odometry, update_pose2)
 	rospy.Subscriber("/porthos/pose", Odometry, update_pose3)
