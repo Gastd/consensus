@@ -69,7 +69,7 @@ def update_pose2(msg):
 	# print(consensus_state)
 
 def update_pose3(msg):
-	print('update_pose3')
+	# print('update_pose3')
 	global consensus_state
 
 	quaternion = (
@@ -106,14 +106,14 @@ if __name__ == '__main__':
 
 
 	# control variables 
-	k = 1
-	l = 1
+	k = 0.2
+	l = 0.05
 
 	# calculates laplacian
 	A = np.array([[0, 0, 0, 0],
-				  [1, 0, 1, 1],
-				  [1, 1, 0 ,1],
-				  [1, 1, 1, 0]])
+				  [1, 0, 0, 0],
+				  [1, 0, 0 ,0],
+				  [1, 0, 0, 0]])
 
 	cmd_vel = Twist()
 	delta_t = 0.1
@@ -127,21 +127,19 @@ if __name__ == '__main__':
 
 				u1_sum = 0
 				for j in range(n):
-					if(j != this_robot):
-						v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
-						u1_sum += A[this_robot, j] * v_error
+					v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
+					u1_sum += A[this_robot, j] * v_error
 
-				u1 = -k * u1_sum - l * np.sign(u1_sum)
+				u1 = -(k * u1_sum) - (l * np.sign(u1_sum))
 
 
 
 				u2_sum = 0
 				for j in range(n):
-					if(j != this_robot):
-						theta_error = consensus_state[n + this_robot, 0] - consensus_state[n + j, 0]
-						u2_sum += A[this_robot, j] * theta_error
+					theta_error = consensus_state[n + this_robot, 0] - consensus_state[n + j, 0]
+					u2_sum += A[this_robot, j] * theta_error
 
-				u2 = -k * u2_sum - l * np.sign(u2_sum)
+				u2 = -(k * u2_sum) - (l * np.sign(u2_sum))
 
 
 
@@ -150,18 +148,18 @@ if __name__ == '__main__':
 				v = v + u1 * delta_t
 				w = u2
 
-				#print(v)
-				#print(w)
+				print(v)
+				# print(w)
 
-				if v > 0.1:
-					v = 0.1
-				elif v < -0.1:
-					v = -0.1
+				# if v > 0.1:
+				# 	v = 0.1
+				# elif v < -0.1:
+				# 	v = -0.1
 
-				if w > 0.1:
-					w = 0.1
-				elif w < -0.1:
-					w = -0.1
+				# if w > 0.1:
+				# 	w = 0.1
+				# elif w < -0.1:
+				# 	w = -0.1
 
 				cmd_vel.linear.x = v
 				cmd_vel.angular.z = w

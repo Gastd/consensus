@@ -12,7 +12,7 @@
     <group ns="$(arg robot1)">
         <param name="tf_prefix" value="$(arg robot1)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 1 -y 1 -z 0" />
+            <arg name="init_pose" value="-x 0 -y 1 -z 0" />
             <arg name="robot_name"  value="$(arg robot1)" />
         </include>
     </group>
@@ -22,7 +22,7 @@
     <group ns="$(arg robot2)">
         <param name="tf_prefix" value="$(arg robot2)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 0 -y 1 -z 0" />
+            <arg name="init_pose" value="-x 0 -y 2 -z 0" />
             <arg name="robot_name"  value="$(arg robot2)" />
         </include>
     </group>
@@ -32,11 +32,11 @@
     <group ns="$(arg robot3)">
         <param name="tf_prefix" value="$(arg robot3)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 1 -y 0 -z 0" />
+            <arg name="init_pose" value="-x 0 -y 3 -z 0" />
             <arg name="robot_name"  value="$(arg robot3)" />
         </include>
     </group>
     <node pkg="tf" type="static_transform_publisher" name="robot3_broadcaster" args="0 0 0 0 0 0 odom $(arg robot3)/odom 50" />
 
-
+    <include file="$(find consensus)/launch/display.launch" />
 </launch>

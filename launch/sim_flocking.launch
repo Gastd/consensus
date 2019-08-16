@@ -2,7 +2,7 @@
 <launch>
     <node name="aramis_flock" type="flocking_agents.py" pkg="consensus" args="aramis" />
     <node name="porthos_flock" type="flocking_agents.py" pkg="consensus" args="porthos" />
-    <node name="athos_flock" type="flocking_agents.py" pkg="consensus" args="athos" />
-    <node name="leader_flock" type="flocking_leader.py" pkg="consensus" args="leader" output="screen" />
+    <node name="athos_flock" type="flocking_agents.py" pkg="consensus" args="athos" output="screen" />
+    <node name="leader_flock" type="flocking_leader.py" pkg="consensus" args="leader" />
 
 </launch>

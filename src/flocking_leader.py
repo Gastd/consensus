@@ -24,8 +24,8 @@ if __name__ == '__main__':
 	print('publishers on!')
 
 
-	leading_v = 1
-	leading_theta = np.sin(np.arange(0, np.pi, 0.01))
+	leading_v = 0.25
+	leading_theta = np.arange(0, 2*np.pi, 0.005)
 
 
 	msg = Odometry()
@@ -51,8 +51,8 @@ if __name__ == '__main__':
 		msg.pose.pose.orientation.w = odom_quat[3]
 
 		# leader state
-		msg.pose.pose.position.x = leading_v * math.cos(leader_state[2]) * delta_t + leader_state[0]
-		msg.pose.pose.position.y = leading_v * math.sin(leader_state[2]) * delta_t + leader_state[1]
+		# msg.pose.pose.position.x = leading_v * math.cos(leader_state[2]) * delta_t + leader_state[0]
+		# msg.pose.pose.position.y = leading_v * math.sin(leader_state[2]) * delta_t + leader_state[1]
 		msg.pose.pose.position.z = 0.0
 
 		# update state
