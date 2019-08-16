@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node name="aramis_dint" type="flocking.py" pkg="consensus" args="aramis" output="screen" />
+    <node name="porthos_dint" type="flocking.py" pkg="consensus" args="porthos" output="screen" />
+    <node name="athos_dint" type="flocking.py" pkg="consensus" args="athos" output="screen" />
+</launch>

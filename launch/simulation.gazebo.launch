@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <launch>
+    <arg name="use_sim_time" default="true"/>
     <arg name="gui" default="false"/>
     <arg name="robot1" default="aramis"/>
     <arg name="robot2" default="porthos"/>
