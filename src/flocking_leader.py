@@ -26,16 +26,22 @@ if __name__ == '__main__':
 	print('publishers on!')
 
 
-	leading_v = 0.1
-	leading_theta = -np.arange(-3.14, np.pi, 0.005)
-
 
 	msg = Odometry()
 	yaw = Float32()
-	delta_t = 0.1
+	delta_t = 0.01
 	rate = rospy.Rate(1/delta_t)
 	# state vector = [x, y, theta]
 	leader_state = [0,0,0]
+
+	leading_v = 0.1
+	leading_theta_speed = 0.1 * delta_t
+	# A = 
+	leading_theta = np.sin(np.concatenate( (np.arange(0, -np.pi/2, -leading_theta_speed), 
+											np.arange(-np.pi/2, np.pi/2, leading_theta_speed), 
+											np.arange( np.pi/2, 0, -leading_theta_speed))
+											)) * np.pi/4
+	# leading_theta = np.concatenate( (leading_theta, -leading_theta) )
 	
 	i = 0
 	cnt = 0

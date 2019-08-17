@@ -113,14 +113,14 @@ if __name__ == '__main__':
 
 
 	# control variables 
-	k = 1
+	k = 0.7
 	l = 0.05
 
 	# calculates laplacian
 	A = np.array([[0, 0, 0, 0],
-				  [1, 0, 0, 0],
-				  [1, 0, 0 ,0],
-				  [1, 0, 0, 0]])
+				  [1, 0, 1, 1],
+				  [1, 1, 0 ,1],
+				  [1, 1, 1, 0]])
 
 	cmd_vel = Twist()
 	delta_t = 0.1

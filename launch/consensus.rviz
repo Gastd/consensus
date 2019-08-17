@@ -4,7 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Status1
         - /Odometry1/Shape1
         - /Odometry3/Shape1
         - /Odometry3/Covariance1/Position1
@@ -52,56 +51,422 @@ Visualization Manager:
         Y: 0
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 100
       Reference Frame: <Fixed Frame>
       Value: true
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        back_sonar_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        battery0:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        center_hubcap:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        center_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        chassis:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sonar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_armControl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_kinect:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        swivel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: aramis/robot_description
       TF Prefix: aramis
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        arm_control_box:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_sonar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chassis:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_sonar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_armControl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_kinect:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_monitor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top_plate:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tv:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: porthos/robot_description
       TF Prefix: porthos
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
-      Enabled: false
+      Enabled: true
       Links:
         All Links Enabled: true
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        arm_control_box:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        back_sonar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        chassis:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        front_sonar:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_back_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_left_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_axle:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_hub:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        p3at_front_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_armControl:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_base:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_kinect:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        suporte_monitor:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa1:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa2:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa3:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tampa4:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        top_plate:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        tv:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
       Name: RobotModel
       Robot Description: athos/robot_description
       TF Prefix: athos
       Update Interval: 0
-      Value: false
+      Value: true
       Visual Enabled: true
     - Class: rviz/TF
       Enabled: false
@@ -281,25 +646,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.014268398284912
+      Distance: 12.365520477294922
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.776569128036499
-        Y: 1.1894484758377075
-        Z: 0.741874635219574
+        X: 2.974827527999878
+        Y: -2.2979376316070557
+        Z: 1.287305235862732
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.759796142578125
+      Pitch: 1.5647963285446167
       Target Frame: odom
       Value: Orbit (rviz)
-      Yaw: 5.940420627593994
+      Yaw: 3.137237787246704
     Saved: ~
 Window Geometry:
   Displays:

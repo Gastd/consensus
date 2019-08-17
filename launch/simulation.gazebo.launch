@@ -12,7 +12,7 @@
     <group ns="$(arg robot1)">
         <param name="tf_prefix" value="$(arg robot1)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 0 -y 2 -z 0 -Y -3.141" />
+            <arg name="init_pose" value="-y 0 -x 2 -z 0 -Y -0" />
             <arg name="robot_name"  value="$(arg robot1)" />
         </include>
     </group>
@@ -22,7 +22,7 @@
     <group ns="$(arg robot2)">
         <param name="tf_prefix" value="$(arg robot2)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 0 -y 0 -z 0 -Y -3.141" />
+            <arg name="init_pose" value="-y 0 -x 0 -z 0 -Y -0" />
             <arg name="robot_name"  value="$(arg robot2)" />
         </include>
     </group>
@@ -32,7 +32,7 @@
     <group ns="$(arg robot3)">
         <param name="tf_prefix" value="$(arg robot3)" />
         <include file="$(find consensus)/launch/spawn_robot.gazebo.launch" >
-            <arg name="init_pose" value="-x 0 -y -2 -z 0 -Y -3.141" />
+            <arg name="init_pose" value="-y 0 -x -2 -z 0 -Y 0" />
             <arg name="robot_name"  value="$(arg robot3)" />
         </include>
     </group>

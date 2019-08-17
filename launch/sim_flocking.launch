@@ -2,7 +2,8 @@
 <launch>
     <node name="aramis_flock" type="flocking_agents.py" pkg="consensus" args="aramis" />
     <node name="porthos_flock" type="flocking_agents.py" pkg="consensus" args="porthos" />
-    <node name="athos_flock" type="flocking_agents.py" pkg="consensus" args="athos" output="screen" />
-    <node name="leader_flock" type="flocking_leader.py" pkg="consensus" args="leader" />
-
+    <node name="athos_flock" type="flocking_agents.py" pkg="consensus" args="athos" />
+    <node name="leader_flock" type="flocking_leader.py" pkg="consensus" args="leader" output="screen" />
+      <node name="pos_vel_plot" pkg="rqt_plot" type="rqt_plot"
+        args="/aramis/pose/twist/twist/linear/x /athos/pose/twist/twist/linear/x /porthos/pose/twist/twist/linear/x" />
 </launch>

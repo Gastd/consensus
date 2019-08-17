@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- <arg name="use_sim_time" default="true"/> -->
+    <arg name="gui" default="false"/>
+    <arg name="robot" default="aramis"/>
+    <!-- BEGIN ROBOT 1-->
+    <group ns="$(arg robot)">
+        <param name="tf_prefix" value="$(arg robot)" />
+        <node name="flock" type="flocking_agents.py" pkg="consensus" args="$(arg robot)" />
+    </group>
+    <group if="$(eval robot_name == 'aramis')">
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="0 0 0 0 0 0 odom $(arg aramis)/odom 50" />
+    </group>
+    <group if="$(eval robot_name == 'porthos')">
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="2 0 0 0 0 0 odom $(arg porthos)/odom 50" />
+    </group>
+    <group if="$(eval robot_name == 'athos')">
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="4 0 0 0 0 0 odom $(arg athos)/odom 50" />
+    </group>
+
+    <!-- <include file="$(find consensus)/launch/display.launch" /> -->
+</launch>
