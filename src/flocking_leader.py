@@ -4,6 +4,7 @@ import sys
 import rospy
 import math
 import numpy as np
+from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from turtlesim.msg import Pose as TurtlePose
@@ -21,14 +22,16 @@ if __name__ == '__main__':
 	# starts subscribers and publishers
 	# print('subscribers on!')
 	pub = rospy.Publisher("/leader/pose", Odometry, queue_size=10)
+	pub_yaw = rospy.Publisher("/leader/yaw", Float32, queue_size=10)
 	print('publishers on!')
 
 
-	leading_v = 0.25
-	leading_theta = np.arange(0, 2*np.pi, 0.005)
+	leading_v = 0.1
+	leading_theta = -np.arange(-3.14, np.pi, 0.005)
 
 
 	msg = Odometry()
+	yaw = Float32()
 	delta_t = 0.1
 	rate = rospy.Rate(1/delta_t)
 	# state vector = [x, y, theta]
@@ -50,6 +53,8 @@ if __name__ == '__main__':
 		msg.pose.pose.orientation.z = odom_quat[2]
 		msg.pose.pose.orientation.w = odom_quat[3]
 
+		yaw.data = leading_theta[i]
+
 		# leader state
 		# msg.pose.pose.position.x = leading_v * math.cos(leader_state[2]) * delta_t + leader_state[0]
 		# msg.pose.pose.position.y = leading_v * math.sin(leader_state[2]) * delta_t + leader_state[1]
@@ -66,6 +71,7 @@ if __name__ == '__main__':
 			i = 0
 
 		pub.publish(msg)
+		pub_yaw.publish(yaw)
 		rate.sleep()
 
 				

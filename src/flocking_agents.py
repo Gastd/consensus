@@ -4,6 +4,7 @@ import sys
 import rospy
 import math
 import numpy as np
+from std_msgs.msg import Float32
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from turtlesim.msg import Pose as TurtlePose
@@ -24,19 +25,24 @@ print('global variables initialized')
 # TO DO
 # adicionar offsets de posicao
 
+def update_yawl(msg):
+	global consensus_state
+
+	consensus_state[4,0] = msg.data
+	# consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
 
 def update_pose0(msg):
 	#print('update_pose1')
 	global consensus_state
 
-	quaternion = (
-	    msg.pose.pose.orientation.x,
-	    msg.pose.pose.orientation.y,
-	    msg.pose.pose.orientation.z,
-	    msg.pose.pose.orientation.w)
+	# quaternion = (
+	#     msg.pose.pose.orientation.x,
+	#     msg.pose.pose.orientation.y,
+	#     msg.pose.pose.orientation.z,
+	#     msg.pose.pose.orientation.w)
 
 	consensus_state[0, 0] = msg.twist.twist.linear.x # linear speed
-	consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+	# consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
 
 def update_pose1(msg):
 	#print('update_pose1')
@@ -97,6 +103,7 @@ if __name__ == '__main__':
 	print(robot_name[this_robot] + " is on!")
 	# starts subscribers and publishers
 	rospy.Subscriber("/leader/pose", Odometry, update_pose0)
+	rospy.Subscriber("/leader/yaw", Float32, update_yawl)
 	rospy.Subscriber("/aramis/pose", Odometry, update_pose1)
 	rospy.Subscriber("/athos/pose", Odometry, update_pose2)
 	rospy.Subscriber("/porthos/pose", Odometry, update_pose3)
@@ -106,7 +113,7 @@ if __name__ == '__main__':
 
 
 	# control variables 
-	k = 0.2
+	k = 1
 	l = 0.05
 
 	# calculates laplacian
@@ -121,6 +128,7 @@ if __name__ == '__main__':
 
 	this_robot += 1
 
+	teste = 0
 	while not rospy.is_shutdown():
 				
 
@@ -129,8 +137,9 @@ if __name__ == '__main__':
 				for j in range(n):
 					v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
 					u1_sum += A[this_robot, j] * v_error
-
+				
 				u1 = -(k * u1_sum) - (l * np.sign(u1_sum))
+				print(u1, -(k * u1_sum), - (l * np.sign(u1_sum)))
 
 
 
@@ -145,10 +154,11 @@ if __name__ == '__main__':
 
 				v = consensus_state[this_robot, 0]
 
+				print(v)
 				v = v + u1 * delta_t
 				w = u2
-
 				print(v)
+
 				# print(w)
 
 				# if v > 0.1:
@@ -162,6 +172,9 @@ if __name__ == '__main__':
 				# 	w = -0.1
 
 				cmd_vel.linear.x = v
+				# if(this_robot == 2):
+				# 	cmd_vel.linear.x = 1 - teste*0.01
+				# 	teste+=1
 				cmd_vel.angular.z = w
 
 				pub.publish(cmd_vel)
