@@ -2,20 +2,27 @@
 <launch>
     <!-- <arg name="use_sim_time" default="true"/> -->
     <arg name="gui" default="false"/>
-    <arg name="robot" default="aramis"/>
-    <!-- BEGIN ROBOT 1-->
-    <group ns="$(arg robot)">
+    <arg name="robot" default="athos"/>
+
+    <group if="$(eval robot == 'aramis')">
         <param name="tf_prefix" value="$(arg robot)" />
-        <node name="flock" type="flocking_agents.py" pkg="consensus" args="$(arg robot)" />
+        <node name="flock_$(arg robot)" type="flocking_agents.py" pkg="consensus" args="$(arg robot)" />
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster1" args="0 0 0 0 0 0 odom $(arg robot)/odom 50" />
+        <include file="$(find aramis_description)/launch/aramis_description.launch" />
     </group>
-    <group if="$(eval robot_name == 'aramis')">
-        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="0 0 0 0 0 0 odom $(arg aramis)/odom 50" />
+
+    <group if="$(eval robot == 'athos')">
+        <param name="tf_prefix" value="$(arg robot)" />
+        <node name="flock_$(arg robot)" type="flocking_agents.py" pkg="consensus" args="$(arg robot)" />
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster2" args="2 0 0 0 0 0 odom $(arg robot)/odom 50" />
+        <include file="$(find athos_description)/launch/athos_description.launch" />
     </group>
-    <group if="$(eval robot_name == 'porthos')">
-        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="2 0 0 0 0 0 odom $(arg porthos)/odom 50" />
-    </group>
-    <group if="$(eval robot_name == 'athos')">
-        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster" args="4 0 0 0 0 0 odom $(arg athos)/odom 50" />
+
+    <group if="$(eval robot == 'porthos')">
+        <param name="tf_prefix" value="$(arg robot)" />
+        <node name="flock_$(arg robot)" type="flocking_agents.py" pkg="consensus" args="$(arg robot)" />
+        <node pkg="tf" type="static_transform_publisher" name="robot_broadcaster3" args="4 0 0 0 0 0 odom $(arg robot)/odom 50" />
+        <include file="$(find porthos_description)/launch/porthos_description.launch" />
     </group>
 
     <!-- <include file="$(find consensus)/launch/display.launch" /> -->

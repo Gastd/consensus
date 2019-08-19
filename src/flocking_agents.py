@@ -123,16 +123,13 @@ if __name__ == '__main__':
 				  [1, 1, 1, 0]])
 
 	cmd_vel = Twist()
-	delta_t = 0.1
+	delta_t = 1
 	rate = rospy.Rate(1/delta_t)
 
 	this_robot += 1
 
 	teste = 0
 	while not rospy.is_shutdown():
-				
-
-
 				u1_sum = 0
 				for j in range(n):
 					v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]

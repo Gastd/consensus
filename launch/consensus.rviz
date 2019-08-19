@@ -92,6 +92,15 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        kinect_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        kinect_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         left_hub:
           Alpha: 1
           Show Axes: false
@@ -117,42 +126,71 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        suporte_armControl:
+        sonar_0_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        suporte_base:
+        sonar_0_range_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
-        suporte_kinect:
+        sonar_1_frame:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
+        sonar_1_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_2_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_2_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_3_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_3_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_4_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_4_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_5_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_5_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_6_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_6_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_7_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        sonar_7_range_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         swivel:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tampa1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tampa2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tampa3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tampa4:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -457,11 +495,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        tv:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: athos/robot_description
       TF Prefix: athos
@@ -653,9 +686,9 @@ Visualization Manager:
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 2.974827527999878
-        Y: -2.2979376316070557
-        Z: 1.287305235862732
+        X: 5.104889392852783
+        Y: -2.1787030696868896
+        Z: 1.3000825643539429
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
