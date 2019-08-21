@@ -1,7 +1,17 @@
 # consensus
 
-consensus is ROS package used to control cooperative mobile robots in the Laboratory of Automation and Robotics at University of Brasilia.
+consensus is ROS package used to test cooperative controllers with mobile robots in the Laboratory of Automation and Robotics at University of Brasilia.
 
+The code in this package can be used either with simulated robots or with real robots:
+
+## 1. Prerequisites
+
+## 2. Build on ROS
+
+## 3. Run the Simulation
+The Simulation use the well known Gazebo Simulated that is shiped with ROS. The Code here was tested in  
+
+## 2.Algorithms
 * `flocking_leader.py` and `flocking_agents.py` implements the control system proposed in the following article:
 
 ```
