@@ -45,7 +45,7 @@ Then you can test the code, just run the simulation:
 This will open the Gazebo with the robots in posistion ready to go.
 
 
-## 2.Algorithms
+## 4. Algorithms
 * `flocking_leader.py` and `flocking_agents.py` implements the control system proposed in the following article:
 
     ```
@@ -75,3 +75,7 @@ The `flocking_leader.py` implements the _virtual_ leader and can be used with `r
 
 
 * `double_integrator.py` implements
+
+## 5. Disclaimer
+
+This code is used in research, have a good time!
