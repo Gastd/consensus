@@ -14,12 +14,12 @@ The code in this package can be used either with simulated robots or with real r
 
 Clone this repository to your catkin workspace.
 
-```bash
+    ```bash
   cd ${YOUR_WORKSPACE_PATH}/src
   git clone https://github.com/Gastd/consensus.git
   cd ../
   catkin_make
-```
+    ```
 
 
 ## 3. Run the Simulation
@@ -27,20 +27,20 @@ The Simulation use the well known Gazebo Simulated that is shiped with ROS.
 
 * Before running the simulation, you must to download our robots description.
 
-```bash
+    ```bash
     cd ${YOUR_WORKSPACE_PATH}/src
     git clone https://github.com/lara-unb/aramis.git
     git clone https://github.com/lara-unb/athos.git
     git clone https://github.com/lara-unb/porthos.git
     cd ../
     catkin_make
-```
+    ```
 
 Then you can test the code, just run the simulation:
 
 * In a terminal with your ros workspace
     ```bash
-        roslaunch consenus simulation.launch
+    roslaunch consenus simulation.launch
     ```
 This will open the Gazebo with the robots in posistion ready to go.
 
@@ -63,7 +63,7 @@ This will open the Gazebo with the robots in posistion ready to go.
 
 There is a launch file that calls the controllers for each one of the robots including the _virtual_ leader.
     ```bash
-        roslaunch consensus sim_flocking.launch
+    roslaunch consensus sim_flocking.launch
     ```
 
 And the `flocking.launch` will run only a controller and must be used in the robot's computer.
