@@ -15,10 +15,10 @@ The code in this package can be used either with simulated robots or with real r
 Clone this repository to your catkin workspace.
 
     ```bash
-  cd ${YOUR_WORKSPACE_PATH}/src
-  git clone https://github.com/Gastd/consensus.git
-  cd ../
-  catkin_make
+    cd ${YOUR_WORKSPACE_PATH}/src
+    git clone https://github.com/Gastd/consensus.git
+    cd ../
+    catkin_make
     ```
 
 
