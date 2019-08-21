@@ -34,7 +34,7 @@ if __name__ == '__main__':
 	# state vector = [x, y, theta]
 	leader_state = [0,0,0]
 
-	leading_v = 0.5
+	leading_v = 0.1
 	leading_theta_speed = 0.25 * delta_t
 	# A = 
 	leading_theta = np.sin(np.concatenate( (np.arange(0, -np.pi/2, -leading_theta_speed), 

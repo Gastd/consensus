@@ -7,7 +7,7 @@ The code in this package can be used either with simulated robots or with real r
 ## 1. Prerequisites
 
 * This software was tested in Ubuntu 16.04 and 18.04
-* (ROS Kinetic)[https://wiki.ros.org/kinetic/Installation/Ubuntu] and (ROS Melodic)[https://wiki.ros.org/melodic/Installation/Ubuntu]
+* [ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu) and [ROS Melodic](https://wiki.ros.org/melodic/Installation/Ubuntu)
 * Gazebo 9.0.0
 
 ## 2. Build on ROS
