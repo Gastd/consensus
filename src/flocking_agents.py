@@ -107,8 +107,8 @@ if __name__ == '__main__':
 
 
 	# control variables 
-	k = 1
-	l = 1
+	k = 0.7
+	l = 0.05
 
 	# calculates laplacian
 	A = np.array([[0, 0, 0, 0],
