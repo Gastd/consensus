@@ -15,7 +15,7 @@ consensus_state = np.zeros([8, 1])
 #                     0   1   2   3       4       5		  6		  7
 # consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3]
 
-ma_size = 5 # moving average size
+ma_size = 1 # moving average size
 
 #edit add offset
 
@@ -113,7 +113,7 @@ if __name__ == '__main__':
 	# calculates laplacian
 	A = np.array([[0, 0, 0, 0],
 				  [1, 0, 1, 1],
-				  [1, 1, 0 ,1],
+				  [1, 1, 0, 1],
 				  [1, 1, 1, 0]])
 
 	cmd_vel = Twist()
@@ -150,19 +150,6 @@ if __name__ == '__main__':
 
 				v = v + u1 * delta_t
 				w = u2
-
-				#print(v)
-				#print(w)
-
-				if v > 0.1:
-					v = 0.1
-				elif v < -0.1:
-					v = -0.1
-
-				if w > 0.1:
-					w = 0.1
-				elif w < -0.1:
-					w = -0.1
 
 				cmd_vel.linear.x = v
 				cmd_vel.angular.z = w

@@ -2,7 +2,7 @@
 
 consensus is ROS package used to test cooperative controllers with mobile robots in the Laboratory of Automation and Robotics at University of Brasilia.
 
-The code in this package can be used either with simulated robots or with real robots:
+The code in this package can be used either with **simulated robots** or with **real robots**:
 
 ## 1. Prerequisites
 
@@ -23,7 +23,7 @@ catkin_make
 
 
 ## 3. Run the Simulation
-The Simulation use the well known Gazebo Simulated that is shiped with ROS. 
+The Simulation uses the well known Gazebo Simulated that is shiped with ROS. 
 
 * Before running the simulation, you must to download our robots description.
 
@@ -36,14 +36,14 @@ The Simulation use the well known Gazebo Simulated that is shiped with ROS.
     catkin_make
     ```
 
-Then you can test the code, just run the simulation:
+Run the simulation to test the code:
 
 * In a terminal with your ros workspace
     ```
     roslaunch consenus simulation.launch
     ```
 
-This will open the Gazebo with the robots in posistion ready to go.
+This will open the Gazebo with the robots in posistion and ready to go.
 
 
 ## 4. Algorithms
@@ -67,7 +67,7 @@ There is a launch file that calls the controllers for each one of the robots inc
     roslaunch consensus sim_flocking.launch
 
 
-And the `flocking.launch` will run only a controller and must be used in the robot's computer.
+And the `flocking_agents.launch` will run only one controller and must be used in each robot's computer.
 The `display.launch` will open the RViz and will show the robots and its path when they move.
 The `flocking_leader.py` implements the _virtual_ leader and can be used with `rosrun`:
 
