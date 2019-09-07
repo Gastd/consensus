@@ -47,7 +47,7 @@ if __name__ == '__main__':
 
 	#robots
 	robot_name = ["aramis", "athos", "porthos"]
-	this_robot = robot_name.index(sys.argv[1])
+	this_robot = robot_name.index("aramis")
 	n = len(robot_name) + 1
 
 
@@ -64,6 +64,7 @@ if __name__ == '__main__':
 	porthos_aramis = rospy.Publisher("/porthos_aramis", Float64, queue_size=10)
 	print('publishers on!')
 
+	rate = rospy.Rate(100)
 
 	while not rospy.is_shutdown():
 
@@ -77,10 +78,8 @@ if __name__ == '__main__':
 				msg_porthos_aramis = math.sqrt((porthos[0]-aramis[0])**2 + (porthos[1]-aramis[1])**2)
 
 
-				aramis_athos.pub(msg_aramis_athos)
-				athos_porthos.pub(msg_athos_porthos)
-				porthos_aramis.pub(msg_porthos_aramis)	
+				aramis_athos.publish(msg_aramis_athos)
+				athos_porthos.publish(msg_athos_porthos)
+				porthos_aramis.publish(msg_porthos_aramis)
 
 				rate.sleep()
-
-				
