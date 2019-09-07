@@ -142,7 +142,8 @@ if __name__ == '__main__':
 						theta_error = consensus_state[n + this_robot, 0] - consensus_state[n + j, 0]
 						u2_sum += A[this_robot, j]*theta_error
 
-				u2 = -k * u2_sum - l * np.sign(u2_sum)
+				#u2 = -k * u2_sum - l * np.sign(u2_sum)
+				u2 = -k * u2_sum - l * np.arctan(u2_sum)/np.pi*2
 
 
 
