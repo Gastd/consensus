@@ -11,11 +11,13 @@ from tf.transformations import euler_from_quaternion
 
 
 
-consensus_state = np.zeros([8, 1])
-#                     0   1   2   3       4       5		  6		  7
-# consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3]
+consensus_state = np.zeros([16, 1])
+#                     0   1   2   3       4       5		  6		  7	  8   9  10  11  12  13  14  15
+# consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3, x0, x1, x2, x3, y0, y1, y2, y3]
 
 ma_size = 1 # moving average size
+
+very_large_number = 1000000
 
 #edit add offset
 
@@ -30,6 +32,9 @@ def update_pose0(msg):
 	#print('update_pose1')
 	global consensus_state
 
+	consensus_state[8, 0] = very_large_number
+	consensus_state[12, 0] = very_large_number
+
 	quaternion = (
 	    msg.pose.pose.orientation.x,
 	    msg.pose.pose.orientation.y,
@@ -42,6 +47,9 @@ def update_pose0(msg):
 def update_pose1(msg):
 	#print('update_pose1')
 	global consensus_state
+
+	consensus_state[9, 0] = msg.pose.pose.position.x
+	consensus_state[13, 0] = msg.pose.pose.position.y
 
 	quaternion = (
 	    msg.pose.pose.orientation.x,
@@ -58,6 +66,9 @@ def update_pose2(msg):
 	#print('update_pose2')
 	global consensus_state
 
+	consensus_state[10, 0] = msg.pose.pose.position.x
+	consensus_state[14, 0] = msg.pose.pose.position.y
+
 	quaternion = (
 	    msg.pose.pose.orientation.x,
 	    msg.pose.pose.orientation.y,
@@ -72,6 +83,9 @@ def update_pose2(msg):
 def update_pose3(msg):
 	print('update_pose3')
 	global consensus_state
+
+	consensus_state[11, 0] = msg.pose.pose.position.x
+	consensus_state[15, 0] = msg.pose.pose.position.y
 
 	quaternion = (
 	    msg.pose.pose.orientation.x,
@@ -106,7 +120,8 @@ if __name__ == '__main__':
 	print('publishers on!')
 
 
-	# control variables 
+	# control variables
+	k_pos = 1
 	k = 0.7
 	l = 0.05
 
@@ -127,12 +142,19 @@ if __name__ == '__main__':
 
 
 				u1_sum = 0
+				u1_sum_p = 0
 				for j in range(n):
 					if(j != this_robot):
 						v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
+						dx = consensus_state[2*n + this_robot, 0] - consensus_state[2*n + j, 0]
+						dy = consensus_state[3*n + this_robot, 0] - consensus_state[3*n + j, 0]
+						dtheta = np.arctan2(dy, dx) - consensus_state[n + this_robot, 0]
+						dtheta = np.arctan2(np.sin(dtheta), np.cos(dtheta))
+						
+						u1_sum_p += np.cos(dtheta)/np.sqrt(dx**dx + dy**dy)
 						u1_sum += A[this_robot, j]*v_error
 
-				u1 = -k * u1_sum - l * np.sign(u1_sum)
+				u1 = -k * u1_sum - l * np.arctan(u1_sum*10)/np.pi*2 - k_pos * u1_sum_p
 
 
 
