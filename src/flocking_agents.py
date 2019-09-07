@@ -143,7 +143,7 @@ if __name__ == '__main__':
 						u2_sum += A[this_robot, j]*theta_error
 
 				#u2 = -k * u2_sum - l * np.sign(u2_sum)
-				u2 = -k * u2_sum - l * np.arctan(u2_sum)/np.pi*2
+				u2 = -k * u2_sum - l * np.arctan(u2_sum*10)/np.pi*2
 
 
 
