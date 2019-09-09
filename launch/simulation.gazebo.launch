@@ -7,9 +7,9 @@
     <arg name="robot2" default="porthos"/>
     <arg name="robot3" default="athos"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch" >
-        <!-- <arg name="world_name" default="$(find aramis_description)/worlds/maze_static.world"/> -->
         <arg name="gui" default="false"/>
     </include>
+
     <!-- BEGIN ROBOT 1-->
     <group ns="$(arg robot1)">
         <param name="tf_prefix" value="$(arg robot1)" />
