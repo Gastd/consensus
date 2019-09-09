@@ -6,6 +6,7 @@ import math
 import numpy as np
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
+from std_msgs.msg import Float32
 from turtlesim.msg import Pose as TurtlePose
 from tf.transformations import euler_from_quaternion
 
@@ -42,7 +43,17 @@ def update_pose0(msg):
 	    msg.pose.pose.orientation.w)
 
 	consensus_state[0, 0] = msg.twist.twist.linear.x # linear speed
-	consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+	# consensus_state[4, 0] = euler_from_quaternion(quaternion)[2] # orientation n rads
+
+def update_yaw(msg):
+	#print('update_pose1')
+	global consensus_state
+
+	consensus_state[8, 0] = very_large_number
+	consensus_state[12, 0] = very_large_number
+
+	consensus_state[4, 0] = msg.data # orientation n rads
+
 
 def update_pose1(msg):
 	#print('update_pose1')
@@ -81,7 +92,6 @@ def update_pose2(msg):
 	# print(consensus_state)
 
 def update_pose3(msg):
-	print('update_pose3')
 	global consensus_state
 
 	consensus_state[11, 0] = msg.pose.pose.position.x
@@ -112,6 +122,7 @@ if __name__ == '__main__':
 	print(robot_name[this_robot] + " is on!")
 	# starts subscribers and publishers
 	rospy.Subscriber("/leader/pose", Odometry, update_pose0)
+	rospy.Subscriber("/leader/yaw", Float32, update_yaw)
 	rospy.Subscriber("/aramis/pose", Odometry, update_pose1)
 	rospy.Subscriber("/athos/pose", Odometry, update_pose2)
 	rospy.Subscriber("/porthos/pose", Odometry, update_pose3)
@@ -121,7 +132,6 @@ if __name__ == '__main__':
 
 
 	# control variables
-	k_pos = 1
 	k = 0.7
 	l = 0.05
 
@@ -139,23 +149,19 @@ if __name__ == '__main__':
 
 	while not rospy.is_shutdown():
 				
-
+#                     0   1   2   3       4       5		  6		  7	  8   9  10  11  12  13  14  15
+# consensus_state = [v0, v1, v2, v3, theta0, theta1, theta2, theta3, x0, x1, x2, x3, y0, y1, y2, y3]
 
 				u1_sum = 0
-				u1_sum_p = 0
 				for j in range(n):
 					if(j != this_robot):
 						v_error = consensus_state[this_robot, 0] - consensus_state[j, 0]
-						dx = consensus_state[2*n + this_robot, 0] - consensus_state[2*n + j, 0]
-						dy = consensus_state[3*n + this_robot, 0] - consensus_state[3*n + j, 0]
-						dtheta = np.arctan2(dy, dx) - consensus_state[n + this_robot, 0]
-						dtheta = np.arctan2(np.sin(dtheta), np.cos(dtheta))
-						
-						u1_sum_p += np.cos(dtheta)/np.sqrt(dx**dx + dy**dy)
 						u1_sum += A[this_robot, j]*v_error
 
-				u1 = -k * u1_sum - l * np.arctan(u1_sum*10)/np.pi*2 - k_pos * u1_sum_p
-
+				u1 = -k * u1_sum - l * np.sign(u1_sum)
+				# print('dtheta: ', dtheta)
+				# print('dx: ', dx)
+				# print('dy: ', dy)
 
 
 				u2_sum = 0
@@ -164,8 +170,7 @@ if __name__ == '__main__':
 						theta_error = consensus_state[n + this_robot, 0] - consensus_state[n + j, 0]
 						u2_sum += A[this_robot, j]*theta_error
 
-				#u2 = -k * u2_sum - l * np.sign(u2_sum)
-				u2 = -k * u2_sum - l * np.arctan(u2_sum*10)/np.pi*2
+				u2 = -k * u2_sum - l * np.sign(u2_sum)
 
 
 
