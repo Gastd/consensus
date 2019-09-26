@@ -14,18 +14,18 @@ The source code is released under a [MIT license](consensus/LICENSE).
 Affiliation: [LARA](https://lara.unb.br/)<br />
 Maintainer: Gabriel F P Araujo, gabriel.fp.araujo@gmail.com**
 
-The consensus package has been tested under [ROS] Melodic and Ubuntu 18.04. This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
+The consensus package has been tested under the following softwares:
+
+* This software was tested in Ubuntu 16.04 and 18.04
+* [ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu) and [ROS Melodic](https://wiki.ros.org/melodic/Installation/Ubuntu)
+* Gazebo 9.0.0
+
+ This is research code, expect that it changes often and any fitness for a particular purpose is disclaimed.
 
 <!-- [![Build Status](http://rsl-ci.ethz.ch/buildStatus/icon?job=ros_best_practices)](http://rsl-ci.ethz.ch/job/ros_best_practices/) -->
 
 
 <!-- ![Example image](doc/example.jpg) -->
-
-## Prerequisites
-
-* This software was tested in Ubuntu 16.04 and 18.04
-* [ROS Kinetic](https://wiki.ros.org/kinetic/Installation/Ubuntu) and [ROS Melodic](https://wiki.ros.org/melodic/Installation/Ubuntu)
-* Gazebo 9.0.0
 
 ## Build on ROS
 
