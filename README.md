@@ -8,7 +8,7 @@ The code in this package can be used either with **simulated robots** or with **
 
 ### License
 
-The source code is released under a [MIT license](consensus/LICENSE).
+The source code is released under a [MIT license](LICENSE).
 
 **Author: Gabriel F P Araujo<br />
 Affiliation: [LARA](https://lara.unb.br/)<br />
