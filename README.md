@@ -6,7 +6,10 @@ consensus is ROS package used to test cooperative controllers with mobile robots
 
 The code in this package can be used either with **simulated robots** or with **real robots**:
 
-![gif1](docs/gif1.gif)  ![gif2](docs/gif2.gif)
+<p float="left">
+  <img src="/docs/gif1.gif" width="100" />
+  <img src="/docs/gif2.gif" width="100" /> 
+</p>
 
 ### License
 
