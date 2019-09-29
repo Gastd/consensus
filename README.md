@@ -12,7 +12,8 @@ The source code is released under a [MIT license](LICENSE).
 
 **Author: Gabriel F P Araujo<br />
 Affiliation: [LARA](https://lara.unb.br/)<br />
-Maintainer: Gabriel F P Araujo, gabriel.fp.araujo@gmail.com**
+Maintainer: Gabriel F P Araujo, gabriel.fp.araujo@gmail.com
+            Raphael Braccialli, raphael.braccialli@gmail.com**
 
 The consensus package has been tested under the following softwares:
 
