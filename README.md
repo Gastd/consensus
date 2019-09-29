@@ -15,9 +15,9 @@ The code in this package can be used either with **simulated robots** or with **
 
 The source code is released under a [MIT license](LICENSE).
 
-**Author: Gabriel F P Araujo<br />
+**Author: Gabriel F P Araujo and Raphael Braccialli<br />
 Affiliation: [LARA](https://lara.unb.br/)<br />
-Maintainer: Gabriel F P Araujo, gabriel.fp.araujo@gmail.com and Raphael Braccialli, raphael.braccialli@gmail.com**
+Maintainer: [Gabriel F P Araujo](mailto:gabriel.fp.araujo@gmail.com) and [Raphael Braccialli](mailto:raphael.braccialli@gmail.com)**
 
 The consensus package has been tested under the following softwares:
 
